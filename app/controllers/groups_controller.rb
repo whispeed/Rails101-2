@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to groups_path, notice: 'Update Success'
+      redirect_to groups_path, notice: '话题已被你更新！是的！你更新了它！更新了！！'
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_to groups_path, alert: 'Group deleted'
+    redirect_to groups_path, alert: '话题被你删除了！没有了！没有了！！'
   end
 
   def join
@@ -47,9 +47,9 @@ class GroupsController < ApplicationController
 
     if !current_user.is_member_of?(@group)
       current_user.join!(@group)
-      flash[:notice] = "加入本话题组成功！"
+      flash[:notice] = "加入本话题组成功！当当了琅铛～铛铛！！"
     else
-      flash[:warning] = "你已经是本话题组成员了！"
+      flash[:warning] = "你已经是本话题组成员了！都是了！还加什么加！！"
     end
 
     redirect_to group_path(@group)
@@ -60,7 +60,7 @@ class GroupsController < ApplicationController
 
     if current_user.is_member_of?(@group)
       current_user.quit!(@group)
-      flash[:alert] = "已退出本话题组！"
+      flash[:alert] = "已退出本话题组！退出了！走了就别回来！！"
     else
       flash[:warning] = "你不是本话题组成员，怎么退出？XD"
     end
@@ -73,7 +73,7 @@ class GroupsController < ApplicationController
   def find_group_and_check_permission
     @group = Group.find(params[:id])
     if current_user != @group.user
-      redirect_to root_path, alert: "你无权这样做！无权！！"
+      redirect_to root_path, alert: "你无权这样做！无权！！臭不要脸！！"
     end
   end
 

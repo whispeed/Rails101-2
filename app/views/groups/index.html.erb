@@ -22,7 +22,7 @@
           <% if current_user && current_user == group.user %>
              <%= link_to("修改", edit_group_path(group), class: "btn btn-sm btn-default")%>
              <%= link_to("删除", group_path(group), class: "btn btn-sm btn-default",
-                      method: :delete, data: { confirm: "Are you sure?" } )%>
+                      method: :delete, data: { confirm: "你真的要删除？删了可就没有了！" } )%>
           <% end %>
         </td>
       </tr>
